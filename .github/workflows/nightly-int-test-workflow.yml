@@ -169,6 +169,9 @@ jobs:
       - name: install k8s dashboard
         run: |
           kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5/aio/deploy/recommended.yaml
+      - name: Check github rate limits
+        run: |
+          curl -I https://api.github.com/user
       - name: Run Integration test
         run: |
           export SPLUNK_OPERATOR_IMAGE=${{ env.SPLUNK_OPERATOR_IMAGE_NAME }}:$GITHUB_SHA
